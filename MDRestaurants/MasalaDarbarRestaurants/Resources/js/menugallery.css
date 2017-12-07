@@ -1,0 +1,29 @@
+
+
+.filter-button
+{
+    font-family:Lucida Sans;margin:0px auto;color:#EDFFFF;background-color:#8F2640;
+}
+.filter-button:hover
+{
+    font-size: 18px;
+       text-align: center;
+    color: #ffffff;
+    background-color: #bc2b4d;
+
+}
+.btn-default:active .filter-button:active
+{
+    background-color: red;
+    color: white;
+}
+
+.itemimg{
+width:100%;
+height:80px;
+margin-top:0px;
+
+    margin-bottom: 30px;
+
+
+}

@@ -1,0 +1,56 @@
+﻿@model MasalaDarbarRestaurants.Models.MenuItems
+
+@{
+    ViewBag.Title = "DeleteItemsList";
+}
+
+<h2>DeleteItemsList</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MenuItems</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemImage)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

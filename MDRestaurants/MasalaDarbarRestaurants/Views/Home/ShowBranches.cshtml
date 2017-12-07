@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MasalaDarbarRestaurants.Models.MDBranchList>
+
+@{
+    ViewBag.Title = "ShowBranches";
+}
+
+
+<div style="margin-top:50px;" class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-md-12 col-xs-12">
+            <h1 style="text-align:center;font-weight: 800;color:#4B4741;font-family:Helvetica;">
+                Our Branches <small style="color:#777;font-weight: 400;line-height:1;font-family:Lucida Sans;display: block !important;text-transform none;text-align:center;margin:10px 0px 15px 0px;">Visit our nearest Branch! Contact US ! (91+) 8700454580 </small>
+            </h1>
+            <img style="width:30%;height:30px;margin:0px auto;  " class="img-responsive" src="~/Resources/Images/line.png" />
+        </div>
+    </div>
+</div>
+<div  class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-lg-4 col-sm-4 col-xs-12 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/Resources/Images/branches.png" alt="">
+                    <div class="caption">
+                        <h4>
+                            <strong>&nbsp;Masala Darbar </strong><i class="fa fa-map-marker" aria-hidden="true"></i>@Html.DisplayFor(modelItem => item.Location)
+                        </h4>
+                        <p><i class="fa fa-user" aria-hidden="true"></i><h4>Manager</h4> : @Html.DisplayFor(modelitem => item.ManagerName) </p>
+                        <p><i class="fa fa-building" aria-hidden="true"></i><h4>Address</h4> : @Html.DisplayFor(modelitem => item.Address)</p>
+                        <p><i class="fa fa-phone" aria-hidden="true"></i><h4>Mobile No.</h4> : @Html.DisplayFor(modelitem => item.MobileNo)</p>
+                        <p><i class="fa fa-envelope" aria-hidden="true"></i><h4>E-mail</h4>: @Html.DisplayFor(modelitem => item.Email)</p>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+
+</div>

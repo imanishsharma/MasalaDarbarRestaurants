@@ -1,0 +1,119 @@
+﻿@Model IEnumerable<MasalaDarbarRestaurants.Models.MDBranchList>
+
+
+<!-- reservation section
+================================================== -->
+
+
+<div style="margin-top:100px;" class="container">
+
+
+    @model MasalaDarbarRestaurants.Models.Reservations
+    @{
+        ViewBag.Title = "Reservations";
+    }
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-md-12 col-xs-12">
+            <h1 style="text-align:center;font-weight: 800;color:#4B4741;font-family:Helvetica;">
+                RESERVATIONS <small style="color:#777;font-weight: 400;line-height:1;font-family:Lucida Sans;display:block !important;text-transform:none;text-align:center;margin:10px 0px 15px 0px;">Book a table online.</small>
+            </h1>
+            <img style="width:30%;height:30px;margin:0px auto;  " class="img-responsive" src="~/Resources/Images/line.png" />
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="margin-top:20px;" class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                <div style="border-color:#524440;" class="panel panel-info">
+                    <div class="panel-body">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @if (ViewBag.Message != null)
+                {
+                            <div class="form-group">
+                                <div>@ViewBag.Message</div>
+                            </div>
+                        }
+
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <div class="row">
+                                    <div class="col-sm-4 col-md-4 col-xs-12 col-lg-4">
+                                        <label class="rlabel" for="bdate">Date</label>
+                                        <div class="input-group ">
+                                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @type = "text", @name = "bdate", @id = "date", @placeholder = "Pick a date" } })<span></span>
+                                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                            <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        </div>
+
+                                        <label class="rlabel" for="email">Email Address</label>
+                                        <div class="input-group ">
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @name = "email", @id = "email", @placeholder = "Your Email ID" } })<span></span>
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 col-xs-12 col-lg-4">
+
+                                        <label class="rlabel" for="cname">Your Name</label>
+                                        <div class="input-group ">
+                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @name = "cname", @id = "cname", @placeholder = "Full Name" } })<span></span>
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+
+                                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                        </div>
+                                        <label class="rlabel" for="guestno">Guests</label>
+                                        <div class="input-group ">
+                                            @Html.EditorFor(model => model.GuestNo, new { htmlAttributes = new { @class = "form-control", @type = "number", @name = "guestno", @id = "guestno", @placeholder = "How many of you?" } })<span></span>
+                                            @Html.ValidationMessageFor(model => model.GuestNo, "", new { @class = "text-danger" })
+                                            <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 col-xs-12 col-lg-4">
+                                        <label class="rlabel" for="btime">Time</label>
+                                        <div class="input-group bootstrap-timepicker timepicker">
+                                            @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control input-small", @type = "text", @name = "time", @id = "timepicker", @placeholder = "Pick a Time" } })<span></span>
+                                            @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                                            <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                        </div>
+                                        <label class="rlabel" for="email">Phone Number</label>
+                                        <div class="input-group ">
+                                            @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control", @type = "phone", @name = "phone", @id = "phoneno", @placeholder = "Enter your Mobile Number" } })<span></span>
+                                            @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+                                            <span style="font-size:25px;" class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top:50px;" class="row">
+                                    <div class="col-sm-4 col-md-4 col-xs-12 col-lg-4">
+                                        <div class="input-group ">
+                                            @Html.DropDownListFor(model => model.BranchLocation, this.ViewBag.BLocations as SelectList, "Select Branch Location", new { @class = "form-control" })
+                                           
+                                          
+                                            
+                                            <span style="font-size:25px;" class="input-group-addon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 col-xs-12 col-lg-4">
+                                        <button style="width:100%;height:60px;font-family:Lucida Sans;margin:0px auto;color:#EDFFFF;background-color:#8F2640;" type="submit" class="btn btn-default btn-lg"><h4>MAKE RESERVATION</h4></button>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 col-xs-12 col-lg-4">
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    <div style="height:100px;text-align:center;" class="panel-footer"><br /><p style="font-size:20px;color:#777;font-family:Lucida Sans;">You can also call: <strong>91+ 8700454580</strong> to make a reservation.</p></div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- reservation section end
+================================================== -->

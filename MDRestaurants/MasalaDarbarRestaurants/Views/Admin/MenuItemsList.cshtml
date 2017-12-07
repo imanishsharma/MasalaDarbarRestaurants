@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MasalaDarbarRestaurants.Models.MenuItems>
+
+
+@{
+    ViewBag.Title = "MenuItemsList";
+}
+<body style="margin-top:170px;">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemDetail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemPrice) (in &#8377;)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemImage)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemDetail)
+            </td>
+            <td>
+                &#8377; @Html.DisplayFor(modelItem => item.ItemPrice)
+            </td>
+            <td>
+                <img src="/MenuItemImages/@item.ItemImage" width="100" height="100" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditItem", new { id=item.ItemID }) |
+                @Html.ActionLink("Delete", "DeleteItem", new { id=item.ItemID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>

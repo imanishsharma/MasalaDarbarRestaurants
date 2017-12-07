@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - Home</title>
+    @Scripts.Render("~/bundles/modernizr")
+
+
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/Resources/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+          rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.js"></script>
+    <link rel="stylesheet" href="~/Resources/css/menugallery.css">
+    <script src="~/Resources/js/menugallery.js"></script>
+
+
+    <script>
+//datepicker js
+$(function(){
+$('input[id=date]').datepicker()});
+
+
+//timepicker js
+$(function(){
+    $('#timepicker').timepicker()});
+    </script>
+    <script>
+$(function(){
+ $('#timepicker').timepicker('setTime', '00:00 AM/PM')});
+    </script>
+    <style>
+        /* BOOTSTRAP 3.x GLOBAL STYLES
+        -------------------------------------------------- */
+        body {
+            padding-bottom: 40px;
+            color: #5a5a5a;
+            background-color: #FFFFFF;
+        }
+
+        .overlay {
+            color: #fff;
+        }
+
+
+        /* CUSTOMIZE THE NAVBAR
+        -------------------------------------------------- */
+
+        /* Special class on .container surrounding .navbar, used for positioning it into place. */
+        .navbar-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+
+
+        /* CUSTOMIZE THE CAROUSEL
+        -------------------------------------------------- */
+
+        /* Carousel base class */
+        .carousel {
+            margin-bottom: 0px;
+        }
+        /* Since positioning the image, we need to help out the caption */
+        .carousel-caption {
+            z-index: 1;
+        }
+
+        /* Declare heights because of positioning of img element */
+        .carousel .item {
+            background-color: red;
+        }
+
+        .carousel img {
+            margin-top: 0px;
+            top: 0;
+            left: 0;
+            height: 100%;
+        }
+
+        .rlabel {
+            color: #4B4741;
+            font-family: Lucida Sans;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .form-control {
+            background-color: #F3F1ED;
+            height: 50px;
+            font-family: Lucida Sans;
+            font-size: 15px;
+        }
+
+        /* RESPONSIVE CSS
+        -------------------------------------------------- */
+    </style>
+</head>
+
+
+
+<body>
+    <div class="navbar-wrapper">
+        <div class="container">
+
+            <div style="background-color:#433D2F;opacity:0.9;" class="navbar navbar-inverse navbar-fixed-top">
+                <a class="navbar-brand" href="@Url.Action("Index","Home")"><img class="img-responsive hidden-xs" src="~/Resources/Images/logo.png" /><img style="margin-top:-22px;" class="img-responsive visible-xs-* hidden-sm hidden-md hidden-lg" src="~/Resources/Images/logoxs.png" /></a>
+                <div class="navbar-header">
+
+                    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+
+                    <ul style="margin-right:10px;" class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; HOME  </a></li>
+                        <li><a href="#"><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp; MENU</a></li>
+                        <li><a href="@Url.Action("ShowBranches","Home")"><i class="fa fa-building" aria-hidden="true"></i>&nbsp; OUR BRANCHES</a></li>
+                        <li><a href="@Url.Action("AboutUs","Home")"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp; ABOUT US</a></li>
+                       <li><a href="#"><i class="fa fa-volume-control-phone" aria-hidden="true"></i>&nbsp;  CONTACT US</a></li>
+@{
+    if (Session["Username"] != null)
+    {
+        <li><a href="#">Hello! @Session["Username"]</a></li>
+        <li><a href="@Url.Action("Logout","Account")"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout</a></li>
+
+    }
+    else
+    {
+        <li><a href="@Url.Action("Register","Account")"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp; REGISTER</a></li>
+        <li><a href="@Url.Action("Login","Account")"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp; LOGIN</a></li>
+
+    }
+ 
+}
+        
+                                </ul>
+                </div>
+
+            </div>
+        </div><!-- /container -->
+    </div><!-- /navbar wrapper -->
+
+
+
+
+
+    @RenderBody()
+
+    <footer>
+        <img style="width:50%;height:50px;margin:50px auto;  " class="img-responsive" src="~/Resources/Images/line.png" />
+        <div style="background-color:#4B3C39;margin-left:0px;margin-right:0px;margin-bottom:0px;width:100%;" class="container">
+            <div class="row">
+                <div style="margin-top:30px;" class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                    <h4 style="font-weight: 800;font-size:25px;color:#E95850;font-family:Helvetica;text-align:center;">ABOUT US </h4>
+
+                    <p style="margin-top:20px;font-family:Lucida Sans;color: #828281;font-size:20px;">
+                        <strong>Masala Darbar</strong> is established as fine dining Indian restaurants known for its exclusivity and a touch of simplicity that is as unique as is the name. We take pride in offering tasty Indian food with exotic picks from all over India.<a style="color:#E95850;">&nbsp;Read More</a>
+                    </p><br />
+                </div>
+                <div style="margin-top:30px;" class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                    <h4 style="font-weight: 800;font-size:25px;color:#E95850;font-family:Helvetica;text-align:center;">RESTAURANTS TIMING </h4>
+                    <h4 style="margin-top:20px;font-weight: 800;font-size:20px;color:#E95850;font-family:Helvetica;text-align:left;">Lunch: </h4>
+                    <p style="margin-top:0px;font-family:Lucida Sans;color: #828281;font-size:20px;">
+                        Monday - Saturday | 11:30 AM - 2:30 PM <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sunday  |  10:00 AM - 3:00 PM
+                    </p>
+                    <h4 style="margin-top:25px;font-weight: 800;font-size:20px;color:#E95850;font-family:Helvetica;text-align:left;">Dinner: </h4>
+                    <p style="margin-top:0px;font-family:Lucida Sans;color: #828281;font-size:20px;">
+                        Monday - Saturday | 8 PM - 12:00 PM
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sunday  |  7:00 PM - 11:30 PM
+
+                    </p>
+                </div>
+                <div style="margin-top:30px;" class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                    <h4 style="font-weight: 800;font-size:20px;color:#E95850;font-family:Helvetica;text-align:center;">REACH US </h4>
+                    <div style="margin-top:0px;margin-left:0px;background-color:#4F081A;">
+                        <div style="text-align:center;margin-top:0px;">
+                            <a href="#" style="color:white;font-size:50px;margin-top:0px;margin-left:0px;margin-top:0px;"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                            <a href="#" style="color:white;font-size:50px;margin-top:0px;margin-left:10px;"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#" style="color:white;font-size:50px;margin-top:0px;margin-left:10px;"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                            <a href="#" style="color:white;font-size:50px;margin-top:0px;margin-left:10px;"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>
+
+                        </div>
+                    </div>
+                    <p style="margin-top:0px;font-family:Lucida Sans;color: #828281;margin-top:50px;font-size:15px;">
+                        <span style="color:#E95850;font-size:40px;"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <strong>&nbsp;Masala Darbar Restaurants (Main Branch)</strong><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A-45 Connaught Place,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New Delhi- 110001 | India
+                    </p>
+                    <p style="margin-top:0px;font-family:Lucida Sans;color: #828281;margin-top:0px;font-size:15px;">
+                        <span style="color:#E95850;font-size:40px;"><i class="fa fa-volume-control-phone" aria-hidden="true"></i></span>
+                        <strong>&nbsp;PHONE: &nbsp;011-22111666</strong><br />
+                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;CALL US: &nbsp;91+ 8700454580</strong><br />
+                    </p>
+                    <p style="margin-top:0px;font-family:Lucida Sans;color: #828281;margin-top:0px;font-size:15px;">
+                        <span style="color:#E95850;font-size:40px;"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        &nbsp;contactus@masaladarbar.com<br />
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div style="width:100%;background-color:#4F081A;margin-top:0px;margin-bottom:-40px;" class="container">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                    <div style="text-align:center;">
+                        <br /><p style="font-size:18px;color:#777;font-family:Lucida Sans;"><strong><i class="fa fa-copyright" aria-hidden="true"></i>2017 MASALA DARBAR RESTAURANTS </strong> </p>
+
+                    </div>
+                    <div style="text-align:right">
+                        <strong> DEVELOPED BY &nbsp; |<a style="font-family:forte;font-size:20px;" href="http://immanish.000webhostapp.com">ImManish</a></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </footer>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
